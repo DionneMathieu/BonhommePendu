@@ -9,6 +9,14 @@ namespace BonhommePendu.Events
 
         // TODO: Compléter
         public WrongGuessEvent(GameData gameData) {
+            Events = new List<GameEvent> { };
+            //ajout +1 au nombre de mauvaise réponse
+            gameData.NbWrongGuesses++;
+            //si 6 mauvaise réponses
+            if (gameData.NbWrongGuesses >= 6)
+            {
+                Events.Add(new LoseEvent(gameData));
+            }
         }
     }
 }
